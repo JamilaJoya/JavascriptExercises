@@ -1,0 +1,10 @@
+// CONVERT FAHRENHEIT TO CELCIUS
+let fahrenheitToCelcius = function(fahrenheit) {
+  let celcius = ((fahrenheit - 32) * 5) / 9;
+  return celcius;
+};
+
+let degree = fahrenheitToCelcius(32);
+let degreeTwo = fahrenheitToCelcius(68);
+console.log(degree);  //result is 0 c
+console.log(degreeTwo); // result is 20 c
