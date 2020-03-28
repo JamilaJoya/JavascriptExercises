@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Square a number</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <input type="text" id="number" placeholder="Enter a number" />
+      <button id="btnSquare">Square</button>
+       <button id="clear">Clear</button>
+      <div id="showResult"></div>
+    </div>
+    <script>
+      document
+        .querySelector("#btnSquare")
+        .addEventListener("click", function() {
+          let number = document.querySelector("#number").value;
+          let result = number * number;
+          document.querySelector("#showResult").textContent = result;
+        });
+       document.querySelector("#clear").addEventListener("click", init);
+      function init() {
+        document.querySelector("#number").value = " ";
+        document.querySelector("#showResult").textContent = " ";
+      }
+    </script>
+  </body>
+</html>
