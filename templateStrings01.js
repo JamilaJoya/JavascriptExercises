@@ -13,6 +13,9 @@ let getTip = function (total, tipPercent = 0.2) {
 };
 
 let tip = getTip(40, 0.25);
-console.log(tip); 
+console.log(tip);  // output: A 25% tip on $40 would be $10
 
-// output: A 25% tip on $40 would be $10
+// In case if use default tip percentage .2, then only provide the amount. ex $60 
+//let tip = getTip(60);
+// output: A 20% tip on $60 would be $12
+
