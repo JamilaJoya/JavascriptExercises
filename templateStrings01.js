@@ -4,7 +4,9 @@
 
 
 let getTip = function (total, tipPercent = 0.2) {
-  return `a ${tipPercent * 100}% tip on $${total} would be $${total * tipPercent}`; 
+  let percent = tipPercent * 100;
+  let tip = total * tipPercent;
+  return `A ${percent}% tip on $${total} would be $${tip}`; 
   
   // see below,  this one is to hard to write and to maintain.
   // return 'a %' + tipPercent + 'tip on $'+ total + ' would be $' + total * tipPercent; 
@@ -13,4 +15,4 @@ let getTip = function (total, tipPercent = 0.2) {
 let tip = getTip(40, 0.25);
 console.log(tip); 
 
-// output:  a 25% tip on $40 would be $10
+// output: A 25% tip on $40 would be $10
