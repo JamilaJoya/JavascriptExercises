@@ -1,18 +1,25 @@
 // Give the  SCORE and the TOTALSCORE
 
+
 let gradeCalc = function (score, totalScore) {
     let percent = score / totalScore * 100;
+    let letterGrade = ' ';
     if (percent >= 90) {
-        return `You got A (${percent}%)`;
+        letterGrade = 'A';
     } else if (percent >= 80) {
-        return `You got B (${percent}%)`;
+        letterGrade = 'B';
     } else if (percent >= 70) {
-        return `You got C (${percent}%)`;
+        letterGrade = 'D';
     } else if (percent >= 60) {
-        return `You got D (${percent}%)`;
+        letterGrade = 'C';
     } else {
-        return `You failed (${percent}%)`;
+        letterGrade = 'F'
     }
+
+    if (letterGrade === 'F') {
+        return `You failed (%${percent})`
+    } else
+        return `You got ${letterGrade} (%${percent})`;
 }
 
 let result = gradeCalc(18, 20);
