@@ -1,5 +1,6 @@
 // This example, shows template literals(template strings)
-// Instead of ' ' quotation use ` `.
+// Instead of ' ' quotation use ` `. instead of + variableName use just ${variableName} 
+// 'Name ' + name  --> `Name'${name}
 // In this case we don't need concatenation + and maintaining is too simple
 
 
