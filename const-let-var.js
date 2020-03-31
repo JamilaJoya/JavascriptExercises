@@ -16,3 +16,18 @@ const person = {
 // if we have const objects, still we can modify it's properties
 person.age = 28;
 console.log(person);
+
+// ------ var variables ----
+// var is not going to use too much in these days development life.
+var firstName = ' John';
+console.log(firstName); // John
+
+// here var is similer to let
+firstName = 'Jen';
+console.log(firstName); // Jen
+
+// but here a big problem
+// in an application, there is alot of possibility to define two or more variables with same name accidently
+// with var we can not solve this problem.
+var firstName = 'Mike';
+console.log(firstName); // Mike: it prints Mike without a little complaint
