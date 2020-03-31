@@ -1,5 +1,22 @@
 
-// differences between let and const, 
+// differences between let and const, var
+
+
+// let and const is a block based scope
+/*
+if (10 === 10) {
+    let name = 'Ali';
+}
+console.log(name); // error, we dont have access to name inside if statement with let or const defination 
+*/
+
+
+// var is a function based scope 
+if (10 === 10) {
+    var secondName = 'Ahmad';
+}
+console.log(secondName); // still we have access to secondName inside of if statement
+
 // const based variable can not reassign
 // why using const instead of let? it is because readablity.
 // we telling to the reader of the code that this is a variable who's values is never going to change.
