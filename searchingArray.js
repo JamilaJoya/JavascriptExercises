@@ -11,8 +11,16 @@ const notes = [{
 }];
 
 const index = notes.findIndex(function (note, index) {
-    return note.title === 'Habbits to work on'
+    return note.title === 'Habbits to work on';
 })
 
 console.log(index);
-// 1
+console.log(notes[index].title);
+console.log(notes[index].body);
+/*
+
+1
+Habbits to work on
+Exercise, eating a bit better
+
+*/
