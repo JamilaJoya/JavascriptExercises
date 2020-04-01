@@ -29,3 +29,14 @@ const deleteTodo = function (todos, textTodo) {
 deleteTodo(todos, 'order cat food');
 console.log(todos)
 
+// OUTPUT
+
+/*
+[
+  { text: 'Buy food', completed: true },
+  { text: 'Do the work', completed: false },
+  { text: 'Clean ketchin', completed: true },
+  { text: 'Exercises', completed: true }
+]
+*/
+
