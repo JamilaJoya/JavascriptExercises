@@ -1,1 +1,2 @@
 We have a list of notes, then our app should render the notes based on what text is entered in text field.
+plus, here a simple form that take data and submit it to console and then clean the text field.
