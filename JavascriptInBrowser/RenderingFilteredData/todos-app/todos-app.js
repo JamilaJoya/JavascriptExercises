@@ -1,38 +1,8 @@
-let todos = []
+let todos = getSavedTodos()
 
 const filters = {
     searchText: '',
     hideCompleted: false
-}
-
-const todosJSON = localStorage.getItem('todos')
-if (todosJSON !== null) {
-    todos = JSON.parse(todosJSON)
-}
-
-const renderedTodos = function (todos, filters) {
-    const filterTodos = todos.filter(function (todo, index) {
-        const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-        const hideComletedMatch = !filters.hideCompleted || !todo.completed
-        return searchTextMatch && hideComletedMatch
-    })
-
-
-    const incompeletedTodos = filterTodos.filter(function (todo) {
-        return !todo.completed
-    })
-    document.querySelector('#todos').innerHTML = ''
-
-    const summary = document.createElement('h2')
-
-    summary.textContent = `You have ${incompeletedTodos.length} todos left`
-    document.querySelector('#todos').appendChild(summary)
-
-    filterTodos.forEach(function (todo) {
-        const todoElement = document.createElement('p')
-        todoElement.textContent = todo.text
-        document.querySelector('#todos').appendChild(todoElement)
-    })
 }
 
 renderedTodos(todos, filters)
@@ -48,7 +18,7 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
         text: e.target.elements.text.value,
         completed: false
     })
-    localStorage.setItem('todos', JSON.stringify(todos))
+    saveTodos(todos)
     renderedTodos(todos, filters)
     e.target.elements.text.value = ''
 })
