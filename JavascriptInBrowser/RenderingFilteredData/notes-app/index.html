@@ -12,14 +12,15 @@
     <h2>Take note and never forget</h2>
 
     <input id="search-text" type="text" placeholder="filter notes">
+    <select id="filter-by">
+        <option value="byEdited">sort by last edited</option>
+        <option value="byCreated">sort by recently created</option>
+        <option value="byAlphabetical">sort alphabeticaly</option>
+    </select>
     <div id="notes">
-
     </div>
     <button id="create-note">Create Note</button>
-    <form id="name-form">
-        <input type="text" placeholder="First name" name="firstName">
-        <button>Submit</button>
-    </form>
+    <script src="notes-functions.js"></script>
     <script src="note-app.js"></script>
 </body>
 
