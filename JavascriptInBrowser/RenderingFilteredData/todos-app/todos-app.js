@@ -1,28 +1,13 @@
-const todos = [{
-    text: 'Walk the dog',
-    completed: true
-
-}, {
-    text: " Order cat food",
-    completed: true
-
-}, {
-    text: 'Do the work',
-    completed: false
-
-}, {
-    text: 'Clean ketchin',
-    completed: false
-
-}, {
-    text: 'Buy food',
-    completed: true
-
-}]
+let todos = []
 
 const filters = {
     searchText: '',
     hideCompleted: false
+}
+
+const todosJSON = localStorage.getItem('todos')
+if (todosJSON !== null) {
+    todos = JSON.parse(todosJSON)
 }
 
 const renderedTodos = function (todos, filters) {
@@ -39,6 +24,7 @@ const renderedTodos = function (todos, filters) {
     document.querySelector('#todos').innerHTML = ''
 
     const summary = document.createElement('h2')
+
     summary.textContent = `You have ${incompeletedTodos.length} todos left`
     document.querySelector('#todos').appendChild(summary)
 
@@ -62,6 +48,7 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
         text: e.target.elements.text.value,
         completed: false
     })
+    localStorage.setItem('todos', JSON.stringify(todos))
     renderedTodos(todos, filters)
     e.target.elements.text.value = ''
 })
