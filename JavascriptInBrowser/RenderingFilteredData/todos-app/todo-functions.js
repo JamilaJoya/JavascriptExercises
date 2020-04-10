@@ -1,5 +1,5 @@
-// Get saved todos
-const getSavedTodos = function () {
+// GET SAVED TODOS
+const getSavedTodo = function () {
     const todosJSON = localStorage.getItem('todos')
     if (todosJSON !== null) {
         return JSON.parse(todosJSON)
@@ -8,41 +8,59 @@ const getSavedTodos = function () {
     }
 }
 
-// Save todos to localstorage
+// SAVE TODOS IN LOCALSTORAGE
 const saveTodos = function (todos) {
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
-// Render todos application
+// RENDER APPLICATION TODOS BASED ON FILTERS
 const renderedTodos = function (todos, filters) {
-    const filterTodos = todos.filter(function (todo, index) {
+    const filteredTodos = todos.filter(function (todo) {
         const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-        const hideComletedMatch = !filters.hideCompleted || !todo.completed
-        return searchTextMatch && hideComletedMatch
+        const hideCompletedMatch = !filters.hideCompleted || !todo.completed
+        return searchTextMatch && hideCompletedMatch
     })
 
-    const incompeletedTodos = filterTodos.filter(function (todo) {
+    const incompleteTodos = filteredTodos.filter(function (todo) {
         return !todo.completed
     })
+
     document.querySelector('#todos').innerHTML = ''
 
-    document.querySelector('#todos').appendChild(generateSummaryDOM(incompeletedTodos))
-    filterTodos.forEach(function (todo) {
+    document.querySelector('#todos').appendChild(generateSummaryDOM(incompleteTodos))
+
+    filteredTodos.forEach(function (todo) {
         document.querySelector('#todos').appendChild(generateTodoDOM(todo))
     })
 }
 
-// Generate todos DOM structures
+// GENERATE TODO DOM structure
 const generateTodoDOM = function (todo) {
-    const p = document.createElement('p')
-    p.textContent = todo.text
-    return p
+    // GENERATE THE DOM STRUCTURE
+    const todoEl = document.createElement('div')
+    const checkbox = document.createElement('input')
+    const todoText = document.createElement('span')
+    const removeButton = document.createElement('button')
 
+
+    // setup todo checkbox
+    checkbox.setAttribute('type', 'checkbox')
+    todoEl.appendChild(checkbox)
+
+    // setup the todo text
+    todoText.textContent = todo.text
+    todoEl.appendChild(todoText)
+
+    // sutup the remove button
+    removeButton.textContent = 'x'
+    todoEl.appendChild(removeButton)
+
+    return todoEl
 }
 
-// Get the DOM element for list summary
-const generateSummaryDOM = function (incompeletedTodos) {
+// GENERATE SUMMARY DOM
+const generateSummaryDOM = function (incompleteTodos) {
     const summary = document.createElement('h2')
-    summary.textContent = `You have ${incompeletedTodos.length} todos left`
+    summary.textContent = `You have ${incompleteTodos.length} todos left.`
     return summary
 }

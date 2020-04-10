@@ -1,4 +1,4 @@
-let todos = getSavedTodos()
+let todos = getSavedTodo()
 
 const filters = {
     searchText: '',
@@ -19,33 +19,14 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
         completed: false
     })
     saveTodos(todos)
+
     renderedTodos(todos, filters)
     e.target.elements.text.value = ''
+
 })
 
 document.querySelector('#hide-completed').addEventListener('change', function (e) {
     filters.hideCompleted = e.target.checked
     renderedTodos(todos, filters)
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
