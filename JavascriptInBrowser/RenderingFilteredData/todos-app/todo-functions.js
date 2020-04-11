@@ -23,6 +23,16 @@ const removeTodos = function (id) {
     }
 }
 
+// toggle the completed value for given todo
+const toggleTodo = function (id) {
+    const todo = todos.find(function (todo) {
+        return todo.id === id
+    })
+    if (todo !== undefined) {
+        todo.completed = !todo.completed
+    }
+}
+
 // RENDER APPLICATION TODOS BASED ON FILTERS
 const renderedTodos = function (todos, filters) {
     const filteredTodos = todos.filter(function (todo) {
@@ -54,7 +64,13 @@ const generateTodoDOM = function (todo) {
 
     // setup todo checkbox
     checkbox.setAttribute('type', 'checkbox')
+    checkbox.checked = todo.completed
     todoEl.appendChild(checkbox)
+    checkbox.addEventListener('change', function () {
+        toggleTodo(todo.id)
+        saveTodos(todos)
+        renderedTodos(todos, filters)
+    })
 
     // setup the todo text
     todoText.textContent = todo.text
@@ -68,8 +84,6 @@ const generateTodoDOM = function (todo) {
         saveTodos(todos)
         renderedTodos(todos, filters)
     })
-
-
     return todoEl
 }
 
