@@ -3,11 +3,7 @@
 // GET SAVED TODOS
 const getSavedTodo = () => {
     const todosJSON = localStorage.getItem('todos')
-    if (todosJSON !== null) {
-        return JSON.parse(todosJSON)
-    } else {
-        return []
-    }
+    return todosJSON !== null ? JSON.parse(todosJSON) : []
 }
 
 // SAVE TODOS IN LOCALSTORAGE
@@ -88,3 +84,4 @@ const generateSummaryDOM = (incompleteTodos) => {
     summary.textContent = `You have ${incompleteTodos.length} todos left.`
     return summary
 }
+
