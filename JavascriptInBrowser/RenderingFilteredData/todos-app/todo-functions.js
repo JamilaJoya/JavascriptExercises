@@ -3,7 +3,7 @@
 // GET SAVED TODOS
 const getSavedTodo = () => {
     const todosJSON = localStorage.getItem('todos')
-    return todosJSON !== null ? JSON.parse(todosJSON) : []
+    return todosJSON ? JSON.parse(todosJSON) : []
 }
 
 // SAVE TODOS IN LOCALSTORAGE
@@ -11,9 +11,10 @@ const saveTodos = (todos) => {
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
-// REMOVE A TODO FROM THE LIST
+// REMOVE A TODO BY ID
 const removeTodos = (id) => {
     const todosIndex = todos.findIndex((todo) => todo.id === id)
+
     if (todosIndex > -1) {
         todos.splice(todosIndex, 1)
     }
@@ -22,7 +23,8 @@ const removeTodos = (id) => {
 // toggle the completed value for given todo
 const toggleTodo = (id) => {
     const todo = todos.find((todo) => todo.id === id)
-    if (todo !== undefined) {
+
+    if (todo) {
         todo.completed = !todo.completed
     }
 }
