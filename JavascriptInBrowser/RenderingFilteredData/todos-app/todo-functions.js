@@ -1,9 +1,15 @@
+'use strict'
+
 // for testing purposes
 
 // GET SAVED TODOS
 const getSavedTodo = () => {
     const todosJSON = localStorage.getItem('todos')
-    return todosJSON ? JSON.parse(todosJSON) : []
+    try {
+        return todosJSON ? JSON.parse(todosJSON) : []
+    } catch (e) {
+        return []
+    }
 }
 
 // SAVE TODOS IN LOCALSTORAGE
