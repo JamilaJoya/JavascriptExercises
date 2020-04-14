@@ -12,6 +12,8 @@ if (!note) {
     location.assign('/index.html')
 }
 
+'use strict'
+
 titleElement.value = note.title
 bodyElemetn.value = note.body
 dateElement.textContent = generateLastEdited(note.updatedAt)
