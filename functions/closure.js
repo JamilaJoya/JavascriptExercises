@@ -1,3 +1,4 @@
+// Create counter 
 const createCounter = () => {
     let count = 0
     return {
@@ -20,7 +21,7 @@ Counter.decrement()
 console.log(Counter.get())
 
 
-
+// Adder 
 const createAdder = (a) => {
     return (b) => {
         return a + b
@@ -49,4 +50,3 @@ const tip20 = createTipper(.2)
 const tip30 = createTipper(.3)
 console.log(tip20(100))
 console.log(tip30(100))
-
