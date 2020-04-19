@@ -1,42 +1,49 @@
-// HTTP (Hypertext Transfer Protocol)
-// Request - what do we want to do
-// Response - what was actually done
 
 const puzzleEl = document.querySelector('#puzzle')
 const guessesEl = document.querySelector('#guesses')
-const game1 = new Hangman('car parts', 2)
-
-puzzleEl.textContent = game1.puzzle
-guessesEl.textContent = game1.statusMessage
+let game1
 
 window.addEventListener('keypress', (e) => {
     const guess = String.fromCharCode(e.charCode)
     game1.makeGues(guess)
+    render()
+
+})
+
+const render = () => {
     puzzleEl.textContent = game1.puzzle
     guessesEl.textContent = game1.statusMessage
+}
 
-})
+const startGame = async () => {
+    const puzzle = await getPuzzle('2')
+    game1 = new Hangman(puzzle, 5)
+    render()
+}
 
-getPuzzle('2').then((puzzle) => {
+document.querySelector('#reset').addEventListener('click', startGame)
+
+startGame()
+
+/* getPuzzle('2').then((puzzle) => {
     console.log(puzzle)
-}, (err) => {
+}).catch((err) => {
     console.log(`Error: ${err}`)
-})
+}) */
 
-getCountry('FI').then((country) => {
+/* getCountry('FI').then((country) => {
     console.log(country.name)
-}, (err) => {
-    console.log(`Error: ${err}`)
+}).catch((err) => {
+    console.log(err)
 })
-
-
-
-
-
-
-
-
-
+ */
+/* getLocation().then((location) => {
+    return getCountry(location.country)
+}).then((country) => {
+    console.log(country.name)
+}).catch((err) => {
+console.log(err)
+}) */
 
 
 
